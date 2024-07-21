@@ -1,0 +1,14 @@
+{
+  "hash": "27ebc0577b2447563495823ac91611d3",
+  "result": {
+    "markdown": "---\ntitle: \"Bayer Leverkusen Goal Analysis\"\nformat: \n  html:\n    grid:\n      body-width: 2000px\neditor: visual\nfilters: \n  - shinylive\n---\n\n\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n\nBayer Leverkusen, or more recently known as Bayer Neverlusen. The German invincibles of the 23/24 Bundesliga season. Were they a team with no weakness? Or can the data show us a picture of how Bayer Leverkusen could have been nullified?\n\nShow passing network shiny app.\n\n\n```{=html}\n<iframe src=\"https://g-edwards.shinyapps.io/bayer_leverkusen_pass_sequence/\" data-external=\"1\" width=\"800\" height=\"800\">\n</iframe>\n```\n\nShow average passing network vs goals scored passing network.\n\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

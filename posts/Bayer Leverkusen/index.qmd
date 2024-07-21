@@ -1,0 +1,159 @@
+---
+title: "Bayer Leverkusen Goal Analysis"
+format: 
+  html:
+    grid:
+      body-width: 2000px
+editor: visual
+filters: 
+  - shinylive
+---
+
+```{r option-chunk, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE)
+knitr::opts_chunk$set(warning=FALSE)
+knitr::opts_chunk$set(message = FALSE)
+
+```
+
+```{r load-libs, echo=FALSE}
+# load libraries
+library(ggplot2)
+library(dplyr)
+library(shiny)
+library(shinythemes)
+library(shinylive)
+library(SBpitch)
+```
+
+```{r load-data}
+# load data
+# leverkusen_23_24_events = readRDS('../data/leverkusen_23_24_events.rds')
+# leverkusen_23_24_matches = readRDS('../data/leverkusen_23_24_matches.rds')
+```
+
+Bayer Leverkusen, the german invincibles of the 23/24 Bundesliga season. Were they a team with no weakness? Or can the data show us a picture of how Bayer Leverkusen could have been nullified?
+
+Show passing network shiny app.
+
+```{=html}
+<iframe src="https://g-edwards.shinyapps.io/bayer_leverkusen_pass_sequence/" data-external="1" width="800" height="800">
+</iframe>
+```
+Show average passing network vs goals scored passing network.
+
+```{r all-moves-before-goal}
+# this method takes in a full event dataset from a given team and returns all moves in all goal sequences
+all_moves_before_goal <- function(team_event_data, team_name){
+  moves_before_all_goals = tibble()
+  for (i in leverkusen_23_24_matches$match_id) {
+    # print(i)
+    goal_vars = team_event_data %>% filter(match_id==i &
+                                           possession_team.name==team_name &
+                                           shot.outcome.name=="Goal" &
+                                           shot.type.name=="Open Play") %>%
+      select(index)
+    
+    
+    if(nrow(goal_vars) != 0) {
+      
+      for(x in goal_vars$index){
+        # print(paste0("goal index: ",x))
+        
+        # filter out the selected match
+        aMatch = team_event_data %>% filter(match_id==i)
+        # filter out dataset of moves before a selected goal
+        events_before_goal = moves_before_goal(x, aMatch)
+        
+        if (nrow(events_before_goal) != 0) {
+          # select only variables we need for the plot and arrange in ascending order
+          passes_before_goal = events_before_goal %>% select(c(team.name, index, type.name, player.name,
+                                                               pass.recipient.name, location, pass.end_location)) %>%
+            arrange(index)
+          
+          passes_before_goal[passes_before_goal == "NULL"] = NA # convert NULLs to NA
+          
+          moves_before_all_goals = rbind(moves_before_all_goals,passes_before_goal)
+        }
+      }
+    }
+  }
+  return(moves_before_all_goals)
+}
+```
+
+```{r avg-player-loc}
+# takes in an event dataframe and calculates average pass and receiving position (Threshold deals with number of touches)
+avg_player_locations = function(event_data, team_name, touch_threshold){
+  
+  # separate coordinate values
+  event_data <- event_data %>%
+    filter(type.name=="Pass" & team.name==team_name) %>%
+    mutate(x=unlist(lapply(location, function(v) as.numeric(v[1]))),
+           y=unlist(lapply(location, function(v) as.numeric(v[2]))),
+           pass_end_x=unlist(lapply(pass.end_location, function(v) ifelse(is.null(v), NA, as.numeric(v[1])))),
+           pass_end_y=unlist(lapply(pass.end_location, function(v) ifelse(is.null(v), NA, as.numeric(v[2])))))
+  
+  # build another dataset with all unique players and their average x and y positions
+  avg_pass_location = event_data %>%
+    group_by(player.name) %>%
+    mutate(avg_pass_x = mean(x),
+           avg_pass_y = mean(y),
+           passing_touches = n()) %>%
+    ungroup() %>%
+    group_by(pass.recipient.name) %>%
+    mutate(avg_rec_x = mean(pass_end_x),
+           avg_rec_y = mean(pass_end_y),
+           rec_touches = n()) %>%
+    ungroup()
+  
+  # average passing positions
+  avg_passes = avg_pass_location %>%
+    select(player.name, avg_pass_x, avg_pass_y, passing_touches) %>%
+    distinct()
+  
+  # average receiving positions
+  avg_rec = avg_pass_location %>%
+    select(pass.recipient.name, avg_rec_x, avg_rec_y, rec_touches) %>%
+    distinct()
+  
+  # average passing and receiving positions
+  player_locations = avg_passes %>%
+    left_join(avg_rec, by=join_by(player.name==pass.recipient.name)) %>%
+    group_by(player.name) %>%
+    mutate(avg_x = mean(c(avg_pass_x, avg_rec_x)),
+           avg_y = mean(c(avg_pass_y, avg_rec_y)),
+           num_touches = sum(c(passing_touches, rec_touches))) %>%
+    filter(passing_touches >= touch_threshold) %>%
+    mutate(player.surname = sub(".*\\s", "", player.name))
+  
+  return(player_locations)
+  
+}
+```
+
+```{r passing-links}
+# build another dataset with pass links (group by player.name and recipient.name) and their average x y locations
+passing_links <- function(event_data, team_name, avg_player_positions, link_freq){
+  
+  links <- event_data %>%
+    filter(team.name == team_name, type.name=="Pass") %>%
+    left_join(avg_player_positions, by = c("player.name" = "player.name")) %>%
+    rename(passer_x = avg_x, passer_y = avg_y) %>%
+    left_join(avg_player_positions, by = c("pass.recipient.name" = "player.name")) %>%
+    rename(rec_x = avg_x, rec_y = avg_y) %>%
+    select(player.name, pass.recipient.name, passer_x, passer_y, rec_x, rec_y) %>%
+    group_by(player.name, pass.recipient.name) %>%
+    mutate(n=n()) %>%
+    arrange(n) %>%
+    distinct()
+  
+  return(links)
+}
+```
+
+```{r apply-functions}
+# all_moves = all_moves_before_goal(leverkusen_23_24_events, 'Bayer Leverkusen')
+# player_locations = avg_player_locations(all_moves, 'Bayer Leverkusen', 5)
+# plinks = passing_links(all_moves, 'Bayer Leverkusen', player_locations)
+```
