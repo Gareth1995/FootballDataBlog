@@ -1,12 +1,7 @@
 ---
 title: "Bayer Leverkusen Goal Analysis"
-format: 
-  html:
-    grid:
-      body-width: 2000px
-editor: visual
-filters: 
-  - shinylive
+author: "Gareth Edwards"
+categories: [Football, Passing, Bundesliga]
 ---
 
 ```{r option-chunk, include=FALSE}
@@ -32,14 +27,46 @@ library(SBpitch)
 # leverkusen_23_24_matches = readRDS('../data/leverkusen_23_24_matches.rds')
 ```
 
-Bayer Leverkusen, the german invincibles of the 23/24 Bundesliga season. Were they a team with no weakness? Or can the data show us a picture of how Bayer Leverkusen could have been nullified?
+# Introduction
 
-Show passing network shiny app.
+The 2023/24 season of the Bundesliga will be remembered as one of the most extraordinary chapters in German football history. Bayer Leverkusen, a club often overshadowed by giants like Bayern Munich and Borussia Dortmund, etched their name in the annals of football with an unbeaten season. This remarkable achievement was a testament to the strategic acumen of their manager, the skill and determination of the players, and the unwavering support of their fans.
+
+Bayer Leverkusen has become the talk of the town in the world of football, and the question on everyone's minds now will be, "can they do it again?" My first question however, is why was no one able to beat them?
+
+I am a strong believer of "Attack wins you games, defense wins you titles" So, my first approach to beating a team would be to figure out how do we keep them from scoring!
+
+# My Focus
+
+My Focus in this blog is on the passing. If we are to keep it as simple as possible, we know that football is really about moving the ball and scoring a goal. If you can move the ball around well, you can score goals. On the other hand, if you know how a team moves the ball around, you can stop the team from scoring.
+
+I have seen many analysts take an overall look at a teams passing and then develop passing networks based on heaps of passing data, most of which were sideways and backward passes. What I have decided to do is take a closer look, and zoom in on passing and passing sequences that lead to goals only.
+
+My first order of action, given that I haven't watched a Bayer Leverkusen match last season, was to visualise all their goals for the 23/24 Bundesliga season. In the interactive visual below we can select a match and view all the unbroken passing sequences that lead to Leverkusen goals (Note: Some matches have no visualisation as there were no goals scored by Leverkusen in those matches).
 
 ```{=html}
 <iframe src="https://g-edwards.shinyapps.io/bayer_leverkusen_pass_sequence/" data-external="1" width="800" height="800">
 </iframe>
 ```
+You might be confused by the grey dotted line on the plots that is labelled as "Avg Direction of Play" on the legend. This is simply a line of best fit that goes through all the player locations in the passing sequence.
+
+When we look at some of these plots we can see a nice, abstracted view, of goals scored by Bayer Leverkusen, but, when the passing sequences become a bit more lengthy we may start to get lost in the dots and lines (see the goal scored at 46:16 in the RB Leipzig vs Bayer Leverkusen match).
+
+To, somewhat, alleviate this problem, one can use passing networks. Passing networks are a great visualisation as they contain a large amount of information in one plot. Now, often I have seen passing networks based on passing data from a whole match, or even a whole season, but this often includes many sideways and backwards passes that we might not be that interested about. Below we see a plot of a passing network plot for Bayern Leverkusen that takes into account all of their passes for the season.
+
+....... Show pass network for whole season .....
+
+......Comment about plot (if there is little to no centrality)......
+
+In the context of facing a formidable team, and figuring out how to stop them from scoring goals, the focus should be on what happens when they score goals. Below I have placed a passing network plot based on only the passes that lead to goals.
+
+..... Show pass network for whole season .....
+
+.....Compare plots ......
+
+.... Show a side by side plot .....
+
+....Conclude.....
+
 Show average passing network vs goals scored passing network.
 
 ```{r all-moves-before-goal}

@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "My Blogs",
     "section": "",
-    "text": "Bayer Leverkusen Goal Analysis\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nJul 15, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Bayer Leverkusen Goal Analysis\n\n\n\n\n\n\n\nFootball\n\n\nPassing\n\n\nBundesliga\n\n\n\n\n\n\n\n\n\n\n\nGareth Edwards\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nJul 15, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -46,7 +46,7 @@
     "href": "posts/Bayer Leverkusen/index.html",
     "title": "Bayer Leverkusen Goal Analysis",
     "section": "",
-    "text": "Bayer Leverkusen, or more recently known as Bayer Neverlusen. The German invincibles of the 23/24 Bundesliga season. Were they a team with no weakness? Or can the data show us a picture of how Bayer Leverkusen could have been nullified?\nShow passing network shiny app.\n\n\nShow average passing network vs goals scored passing network."
+    "text": "Introduction\nThe 2023/24 season of the Bundesliga will be remembered as one of the most extraordinary chapters in German football history. Bayer Leverkusen, a club often overshadowed by giants like Bayern Munich and Borussia Dortmund, etched their name in the annals of football with an unbeaten season. This remarkable achievement was a testament to the strategic acumen of their manager, the skill and determination of the players, and the unwavering support of their fans.\nBayer Leverkusen has become the talk of the town in the world of football, and the question on everyone’s minds now will be, “can they do it again?” My first question however, is how did they do it the first time?\nNow, given that I live in South Africa, and have not had access to any Bayer Leverkusen match, bar their Europa League final, I will not bore you with a chatGPT driven point of view on why I believe Bayer Leverkusen was so good. Instead, I will present you with my work, an perhaps you can fill in the details.\n\n\nMy Focus\nMy Focus in this blog is on the passing. If we are to keep it as simple as possible, we know that football is really about moving the ball and scoring a goal. If you can move the ball around well, you can score goals.\nI have seen many analysts take an overall look at a teams passing and then develop passing networks based on heaps of passing data, most of which were sideways and backward passes. What I have decided to do is take a closer look, and zoom in on passing and passing sequences that lead to goals only.\nMy first order of action, given that I haven’t watched a Bayer Leverkusen match last season, was to visualise all their goals for the 23/24 Bundesliga season. In the interactive visual below we can select a match and view all the unbroken passing sequences that lead to Leverkusen goals (Note: Some matches have no visualisation as there were no goals scored by Leverkusen in those matches).\n\n\nShow average passing network vs goals scored passing network."
   },
   {
     "objectID": "overHere.html",

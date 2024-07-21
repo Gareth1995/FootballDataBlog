@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Gareth Edwards">
 
 <title>Simply Foot - Bayer Leverkusen Goal Analysis</title>
 <style>
@@ -106,12 +107,23 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Bayer Leverkusen Goal Analysis</h1>
-                      </div>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Football</div>
+                <div class="quarto-category">Passing</div>
+                <div class="quarto-category">Bundesliga</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Gareth Edwards </p>
+            </div>
+    </div>
       
     
       
@@ -128,13 +140,23 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Bayer Leverkusen, or more recently known as Bayer Neverlusen. The German invincibles of the 23/24 Bundesliga season. Were they a team with no weakness? Or can the data show us a picture of how Bayer Leverkusen could have been nullified?</p>
-<p>Show passing network shiny app.</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The 2023/24 season of the Bundesliga will be remembered as one of the most extraordinary chapters in German football history. Bayer Leverkusen, a club often overshadowed by giants like Bayern Munich and Borussia Dortmund, etched their name in the annals of football with an unbeaten season. This remarkable achievement was a testament to the strategic acumen of their manager, the skill and determination of the players, and the unwavering support of their fans.</p>
+<p>Bayer Leverkusen has become the talk of the town in the world of football, and the question on everyone’s minds now will be, “can they do it again?” My first question however, is how did they do it the first time?</p>
+<p>Now, given that I live in South Africa, and have not had access to any Bayer Leverkusen match, bar their Europa League final, I will not bore you with a chatGPT driven point of view on why I believe Bayer Leverkusen was so good. Instead, I will present you with my work, an perhaps you can fill in the details.</p>
+</section>
+<section id="my-focus" class="level1">
+<h1>My Focus</h1>
+<p>My Focus in this blog is on the passing. If we are to keep it as simple as possible, we know that football is really about moving the ball and scoring a goal. If you can move the ball around well, you can score goals.</p>
+<p>I have seen many analysts take an overall look at a teams passing and then develop passing networks based on heaps of passing data, most of which were sideways and backward passes. What I have decided to do is take a closer look, and zoom in on passing and passing sequences that lead to goals only.</p>
+<p>My first order of action, given that I haven’t watched a Bayer Leverkusen match last season, was to visualise all their goals for the 23/24 Bundesliga season. In the interactive visual below we can select a match and view all the unbroken passing sequences that lead to Leverkusen goals (Note: Some matches have no visualisation as there were no goals scored by Leverkusen in those matches).</p>
 <iframe src="https://g-edwards.shinyapps.io/bayer_leverkusen_pass_sequence/" data-external="1" width="800" height="800">
 </iframe>
 <p>Show average passing network vs goals scored passing network.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
