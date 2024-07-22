@@ -8,3 +8,11 @@
 .about_me{
   text-align: "left";
 }
+
+.cell-output-display{
+  width: 200%;
+}
+
+#quarto-document-content{
+
+}
