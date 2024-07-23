@@ -1,6 +1,7 @@
 ---
 title: "Bayer Leverkusen Goal Analysis"
 author: "Gareth Edwards"
+date: "2024-07-23"
 categories: [Football, Passing, Bundesliga]
 ---
 
@@ -31,7 +32,7 @@ leverkusen_23_24_matches = readRDS('../data/leverkusen_23_24_matches.rds')
 
 # Introduction
 
-The 2023/24 season of the Bundesliga will be remembered as one of the most extraordinary chapters in German football history. Bayer Leverkusen, a club often overshadowed by giants like Bayern Munich and Borussia Dortmund, etched their name in the annals of football with an unbeaten season. This remarkable achievement was a testament to the strategic acumen of their manager, the skill and determination of the players, and the unwavering support of their fans.
+The 2023/24 season of the Bundesliga will be remembered as one of the most extraordinary chapters in German football history. Bayer Leverkusen, a club often overshadowed by giants, etched their name in the annals of football with an unbeaten season. This remarkable achievement was a testament to the strategic acumen of their manager, the skill and determination of the players, and the unwavering support of their fans.
 
 Bayer Leverkusen has become the talk of the town in the world of football, and the question on everyone's minds now will be, "can they do it again?" My first question however, is why was no one able to beat them?
 
@@ -39,11 +40,11 @@ I am a strong believer of "Attack wins you games, defense wins you titles" So, m
 
 # My Focus
 
-My Focus in this blog is on the passing. If we are to keep it as simple as possible, we know that football is really about moving the ball and scoring a goal. If you can move the ball around well, you can score goals. On the other hand, if you know how a team moves the ball around, you can stop the team from scoring.
+My Focus in this blog is on the passing. If we are to keep it as simple as possible, we know that football is really about moving the ball and scoring a goal. If you can move the ball around well, you can score goals. On the other hand, if you know how a team moves the ball around, you can stop them from scoring goals.
 
 I have seen many analysts take an overall look at a teams passing and then develop passing networks based on heaps of passing data, most of which were sideways and backward passes. What I have decided to do is take a closer look, and zoom in on passing and passing sequences that lead to goals only.
 
-My first order of action, given that I haven't watched a Bayer Leverkusen match last season, was to visualise all their goals for the 23/24 Bundesliga season. In the interactive visual below we can select a match and view all the unbroken passing sequences that lead to Leverkusen goals (Note: Some matches have no visualisation as there were no goals scored by Leverkusen in those matches).
+My first order of action, given that I haven't watched a Bayer Leverkusen match last season (little access to Bundesliga matches in South Africa), was to visualise all their goals for the 23/24 Bundesliga season. In the interactive visual below we can select a match and view all the unbroken passing sequences that lead to Leverkusen goals (Note: Some matches have no visualisation as there were no goals scored by Leverkusen in those matches).
 
 ```{=html}
 <iframe src="https://g-edwards.shinyapps.io/bayer_leverkusen_pass_sequence/" data-external="1" width="800" height="800">
@@ -274,11 +275,11 @@ One of the main aspects we look at when it comes to passing networks is the cent
 
 $C=\frac{\sum_{i=1}^{N} (P_* \cdot P_i)}{(N-1) \sum_{i=1}^{N} p_i}$
 
-Centrality ranges from the values 0 to 1 and is a measure of how diverse or not diverse a team was with their passing. If we have a team with a centrality index of 100% (or 1) it means that there was only one person that everyone in that team passed to and that one person distributed the ball to everyone else. Whereas a centrality index values closer to 0 means that everyone in the team share the ball equally and there is not one person that stands out.
+Centrality ranges from the values 0 to 1 and is a measure of how diverse or not diverse a team was with their passing. If we have a team with a centrality index of 100% (or 1) it means that there was only one person that everyone in that team passed to and that one person distributed the ball to everyone else. Whereas a centrality index values closer to 0 means that everyone in the team share the ball equally and there is not one person that stands out. This means teams with a centrality index closer to one is very predictable with their passes, whereas a team with a centrality index closer to zero is very unpredictable with their passes.
 
-Bayer Leverkusen had a centrality index of 7% for both their passing network over the whole season and their passing network for goals only (although someone can check me on this). A centrality index of 7% means that goals came from all over the pitch and they were a difficult team to predict.
+Bayer Leverkusen had a centrality index of 7% for both their passing network over the whole season and their passing network for goals only. A centrality index of 7% means that goals came from all over the pitch and they were a difficult team to predict.
 
-The data shows it. Bayer Leverkusen was scoring goals from everywhere, and it seems it was very difficult to tie them down. A striker, attacking mid, left back and right back make up the top four!
+The player data shows it! Bayer Leverkusen was scoring goals from everywhere, and it seems it was very difficult to tie them down. A striker, attacking mid, left back and right back make up their top four scorers! Leverkusen had multiple avenues to goal.
 
 | Player            | Goals | Assists |
 |-------------------|-------|---------|
