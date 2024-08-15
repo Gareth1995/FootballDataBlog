@@ -16,3 +16,21 @@
 #quarto-document-content{
 
 }
+
+#.cell\ column-page\ quarto-layout-panel {
+  height: 100px;
+  width: 500px;
+}
+
+.movement_plot_caption{
+  font-size: 0.8em; /* Smaller text size */
+  color: #666; /* Light grey color for a faint appearance */
+  padding-top: 0.2em; /* Reduce padding from the top */
+  font-style: italic; /* Optional: italicize text for a figure caption look */
+  line-height: 1.2; /* Adjust line height if needed for better spacing */
+  text-align: left;
+}
+
+.movement_key_points{
+  text-align: left;
+}
