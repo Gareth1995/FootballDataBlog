@@ -22,7 +22,7 @@
   width: 500px;
 }
 
-.movement_plot_caption{
+.caption{
   font-size: 0.8em; /* Smaller text size */
   color: #666; /* Light grey color for a faint appearance */
   padding-top: 0.2em; /* Reduce padding from the top */
@@ -31,6 +31,6 @@
   text-align: left;
 }
 
-.movement_key_points{
+.key_points{
   text-align: left;
 }

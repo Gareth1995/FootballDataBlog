@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -181,9 +147,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>Expected threat, or xT, is a concept widely spoken, widely used and already well known. To hop onto the trend, I made use of the “Calculating xT (position-based)” tutorial presented by soccermatics (https://soccermatics.readthedocs.io/en/latest/gallery/lesson4/plot_ExpectedThreat.html).</p>
@@ -231,13 +194,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="movement_plot_caption">
+<div class="caption">
 <p>Top four plots belong to the top four teams (arranged in order from 1st to 4th going left to right). The bottom row of the plot are the four mid-table clubs in order of their final league positions (5th, 8th, 10th and 11th)</p>
 </div>
-<div class="movement_key_points">
+<div class="key_points">
 <p>Here are key observations that stand out when analysing this plot:</p>
 <ul>
-<li><p>the darker squares in the Juventus and Napoli (placed 1st and 2nd in the league) heatmaps compared to the other clubs. This is an indication of a higher frequency of ball movement.</p></li>
+<li><p>Darker squares in the Juventus and Napoli (placed 1st and 2nd in the league) heatmaps compared to the other clubs. This is an indication of a higher frequency of ball movement.</p></li>
 <li><p>The pattern of play is similar amongst all teams in terms of where ball movement happens most (center and then wide).</p></li>
 <li><p>Napoli and Inter Milan show a stronger favoritism to move the ball toward the left side of the field.</p></li>
 <li><p>Juventus seem to utilize both flanks equally.</p></li>
@@ -249,6 +212,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="shot-frequency" class="level1 page-columns page-full">
 <h1>Shot Frequency</h1>
 <p>Ball movement is only the half of it, if you don’t shoot, you won’t score. Below we visualize plots of shot frequency per sector and we compare the heatmaps between each team.</p>
+<section id="shot-heatmaps" class="level2 page-columns page-full" style="text-align: center">
+<h2 style="text-align: center" class="anchored" data-anchor-id="shot-heatmaps">Shot Heatmaps</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="plots/shot frequency/legend.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 <div class="cell column-page quarto-layout-panel" data-grid-template-columns="repeat(4, 1fr)">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
@@ -279,7 +249,191 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="key_points">
 <p>Key observations:</p>
+<ul>
+<li><p>Juventus and Napoli are more likely to take shots from outside or on the edge of the box compared to other teams.</p></li>
+<li><p>Napoli take more shots from more frequently from the left side of goal compared to other clubs. Perhaps due to a winger often coming inside and shooting (this would need to be investigated more).</p></li>
+<li><p>Roma, Inter Milan, Genoa and Empoli take most of their shots from the left side of the penalty spot compared to other teams. Juventus is the only team that favour the sector right of the penalty spot.</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="goal-frequency" class="level1 page-columns page-full">
+<h1>Goal Frequency</h1>
+<p>In fact, sometimes when you shoot you don’t score… Goals are everything. Below we plot goal frequency per sector for each team and we investigate how these differ from team to team.</p>
+<section id="goal-frequency-heatmaps" class="level2 page-columns page-full" style="text-align: center">
+<h2 style="text-align: center" class="anchored" data-anchor-id="goal-frequency-heatmaps">Goal Frequency Heatmaps</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="plots/goal frequency/legend.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="cell column-page quarto-layout-panel" data-grid-template-columns="repeat(4, 1fr)">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/goal frequency/Juventus_goal_freq.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/goal frequency/Napoli_goal_freq.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/goal frequency/AS Roma_goal_freq.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/goal frequency/Inter Milan_goal_freq.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/goal frequency/Fiorentina_goal_freq.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/goal frequency/Lazio_goal_freq.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/goal frequency/Genoa_goal_freq.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/goal frequency/Empoli_goal_freq.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="key_points">
+<p>Key observations:</p>
+<ul>
+<li><p>Juventus score more from shots outside the box compared to the other teams. This coincides with their superior shooting frequency from outside the box.</p></li>
+<li><p>Inter Milan have a very small segment from which their goals come from. They rely on working the ball into the box around the penalty area. (restricting them to shots from outside the box may be beneficial) A similar pattern is evident for Fiorentina and Genoa.</p></li>
+<li><p>Most teams score most of their goals from the 4 sectors just oustide the 6 yard box (focused defense in this section, or prevention of the ball getting into this section could be key).</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="xg" class="level1 page-columns page-full">
+<h1>xG</h1>
+<p>The expected goals from each section will tell us which sections a team could be most dangerous in. Further investigation should go into which player is most dangerous in each sector. This could improve on defensive tactics, however, it is most likely that the player who scores most should be on the ball the least in the sections where xG is the highest for each team. Below we see the xG heatmap for each team.</p>
+<section id="xg-heatmap" class="level2 page-columns page-full" style="text-align: center">
+<h2 style="text-align: center" class="anchored" data-anchor-id="xg-heatmap">xG Heatmap</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="plots/xG/legend.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="cell column-page quarto-layout-panel" data-grid-template-columns="repeat(4, 1fr)">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/xG/Juventus_xg.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/xG/Napoli_xg.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/xG/AS Roma_xg.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/xG/Inter Milan_xg.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/xG/Fiorentina_xg.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/xG/Lazio_xg.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/xG/Genoa_xg.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="plots/xG/Empoli_xg.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="caption">
+<p>The xG displayed in this plot was calculated by statsBomb</p>
+</div>
+<div class="key_points">
+<p>Key points:</p>
+<ul>
+<li>xG plots mostly coincide with the goal frequency plots.</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="xt" class="level1 page-columns page-full">
+<h1>xT</h1>
+<p>Expected threat is the method that bases a value score on every section on the pitch. When a team has the ball in a sector that has a higher xT than the last, they have effectively increased their chances of scoring a goal. If a team moves the ball from a high xT zone to a lower xT zone they decrease their chances of scoring a goal (theoretically). For further details on xT see the following post <a href="https://karun.in/blog/expected-threat.html">here</a>. Below is a plot of each team’s xT heatmap.</p>
+<section id="xt-heatmap" class="level2 page-columns page-full" style="text-align: center">
+<h2 style="text-align: center" class="anchored" data-anchor-id="xt-heatmap">xT Heatmap</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="plots/xT/legend.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="cell column-page quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="plots/xT/Juventus_xt.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="plots/xT/Napoli_xt.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="cell column-page quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="plots/xT/AS Roma_xt.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="plots/xT/Inter Milan_xt.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="cell column-page quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="plots/xT/Fiorentina_xt.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="plots/xT/Lazio_xt.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="cell column-page quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="plots/xT/Genoa_xt.png" class="img-fluid"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="plots/xT/Empoli_xt.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="key_points">
+<p>Key points:</p>
+<ul>
+<li><p>Fiorentina, Napoli and Lazio have a higher threat around the penalty area compared to the other teams.</p></li>
+<li><p>Juventus have a uniquely high threat in the sector that lies two sectors above the bottom right corner (xT = 0.12).</p></li>
+<li><p>Juventus have the highest xT in the 6 yard box compared to the other teams. This is a good indication that Juventus were more clinical with their finishing compared to the other clubs.</p></li>
+<li><p>xT is always highest in the four sectors that encompass the penalty spot and the face of the goal. This is the same for all teams.</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>So, what sets the top teams apart from the rest? Below we have some concluding points that became evident in these visualisations:</p>
+<ul>
+<li><p>Top sides move the ball more.</p></li>
+<li><p>Top sides shoot more frequently and take their chances from outside the box too. They, try their luck or have more confidence (further research could be applied here).</p></li>
+<li><p>Top teams are more clinical when they get into ideal goal scoring positions.</p></li>
+</ul>
+<p>There are also some similarities between all clubs that stand out which tell us something about the general game of football:</p>
+<ul>
+<li><p>The highest threat and most goals scored take place in the sectors that are between the penalty spot and the face of the goal.</p></li>
+<li><p>Team movement maps are very similar as the ball often moves to the middle of the pitch and then wide. Very little action takes place in the middle portion of the pitch between the half way line circle and the edge of the box. (These are possibly spaces to exploit. Further analysis could go into player’s off the ball movements)</p></li>
+</ul>
 
 
 </section>

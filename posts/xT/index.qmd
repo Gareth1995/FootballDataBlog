@@ -2,10 +2,11 @@
 title: "Italian xT"
 author: "Gareth Edwards"
 date: "2024-08-15"
+image: "thumbnail.png"
 categories: [Football, xT, Serie A]
 ---
 
-```{r}
+```{r echo=FALSE}
 library(knitr)
 ```
 
@@ -54,13 +55,13 @@ knitr::include_graphics("plots/movement map/Empoli_movement_map.png")
 
 ```
 
-<div class=movement_plot_caption>
+<div class=caption>
 
 Top four plots belong to the top four teams (arranged in order from 1st to 4th going left to right). The bottom row of the plot are the four mid-table clubs in order of their final league positions (5th, 8th, 10th and 11th)
 
 </div>
 
-<div class=movement_key_points>
+<div class=key_points>
 
 Here are key observations that stand out when analysing this plot:
 
@@ -79,6 +80,10 @@ Here are key observations that stand out when analysing this plot:
 # Shot Frequency
 
 Ball movement is only the half of it, if you don't shoot, you won't score. Below we visualize plots of shot frequency per sector and we compare the heatmaps between each team.
+
+## Shot Heatmaps {style="text-align: center"}
+
+![](plots/shot frequency/legend.png){fig-align="center"}
 
 ```{r shot_plots}
 #| layout-ncol: 4
@@ -99,4 +104,199 @@ knitr::include_graphics("plots/shot frequency/Genoa_shot_freq.png")
 knitr::include_graphics("plots/shot frequency/Empoli_shot_freq.png")
 ```
 
+<div class=key_points>
+
 Key observations:
+
+-   Juventus and Napoli are more likely to take shots from outside or on the edge of the box compared to other teams.
+
+-   Napoli take more shots from more frequently from the left side of goal compared to other clubs. Perhaps due to a winger often coming inside and shooting (this would need to be investigated more).
+
+-   Roma, Inter Milan, Genoa and Empoli take most of their shots from the left side of the penalty spot compared to other teams. Juventus is the only team that favour the sector right of the penalty spot.
+
+</div>
+
+# Goal Frequency
+
+In fact, sometimes when you shoot you don't score... Goals are everything. Below we plot goal frequency per sector for each team and we investigate how these differ from team to team.
+
+## Goal Frequency Heatmaps {style="text-align: center"}
+
+![](plots/goal frequency/legend.png){fig-align="center"}
+
+```{r goal_freq_plots}
+#| layout-ncol: 4
+#| layout-nrow: 2
+#| column: page
+#| output: true
+#| fig-width: 40
+#| fig-height: 32
+#| grid-template-columns: repeat(4, 1fr)
+
+knitr::include_graphics("plots/goal frequency/Juventus_goal_freq.png")
+knitr::include_graphics("plots/goal frequency/Napoli_goal_freq.png")
+knitr::include_graphics("plots/goal frequency/AS Roma_goal_freq.png")
+knitr::include_graphics("plots/goal frequency/Inter Milan_goal_freq.png")
+knitr::include_graphics("plots/goal frequency/Fiorentina_goal_freq.png")
+knitr::include_graphics("plots/goal frequency/Lazio_goal_freq.png")
+knitr::include_graphics("plots/goal frequency/Genoa_goal_freq.png")
+knitr::include_graphics("plots/goal frequency/Empoli_goal_freq.png")
+```
+
+<div class=key_points>
+
+Key observations:
+
+-   Juventus score more from shots outside the box compared to the other teams. This coincides with their superior shooting frequency from outside the box.
+
+-   Inter Milan have a very small segment from which their goals come from. They rely on working the ball into the box around the penalty area. (restricting them to shots from outside the box may be beneficial) A similar pattern is evident for Fiorentina and Genoa.
+
+-   Most teams score most of their goals from the 4 sectors just oustide the 6 yard box (focused defense in this section, or prevention of the ball getting into this section could be key).
+
+</div>
+
+# xG
+
+The expected goals from each section will tell us which sections a team could be most dangerous in. Further investigation should go into which player is most dangerous in each sector. This could improve on defensive tactics, however, it is most likely that the player who scores most should be on the ball the least in the sections where xG is the highest for each team. Below we see the xG heatmap for each team.
+
+## xG Heatmap {style="text-align: center"}
+
+![](plots/xG/legend.png){fig-align="center"}
+
+```{r xG_plots}
+#| layout-ncol: 4
+#| layout-nrow: 2
+#| column: page
+#| output: true
+#| fig-width: 40
+#| fig-height: 32
+#| grid-template-columns: repeat(4, 1fr)
+
+knitr::include_graphics("plots/xG/Juventus_xg.png")
+knitr::include_graphics("plots/xG/Napoli_xg.png")
+knitr::include_graphics("plots/xG/AS Roma_xg.png")
+knitr::include_graphics("plots/xG/Inter Milan_xg.png")
+knitr::include_graphics("plots/xG/Fiorentina_xg.png")
+knitr::include_graphics("plots/xG/Lazio_xg.png")
+knitr::include_graphics("plots/xG/Genoa_xg.png")
+knitr::include_graphics("plots/xG/Empoli_xg.png")
+```
+
+<div class=caption>
+
+The xG displayed in this plot was calculated by statsBomb
+
+</div>
+
+<div class=key_points>
+
+Key points:
+
+-   xG plots mostly coincide with the goal frequency plots.
+
+</div>
+
+# xT
+
+Expected threat is the method that bases a value score on every section on the pitch. When a team has the ball in a sector that has a higher xT than the last, they have effectively increased their chances of scoring a goal. If a team moves the ball from a high xT zone to a lower xT zone they decrease their chances of scoring a goal (theoretically). For further details on xT see the following post [here](https://karun.in/blog/expected-threat.html). Below is a plot of each team's xT heatmap.
+
+## xT Heatmap {style="text-align: center"}
+
+![](plots/xT/legend.png){fig-align="center"}
+
+```{r xT_plots, fig.height=32, fig.width=40, out.width="100%", out.height="100%"}
+#| layout-ncol: 2
+#| layout-nrow: 2
+#| column: page
+#| output: true
+
+knitr::include_graphics("plots/xT/Juventus_xt.png")
+knitr::include_graphics("plots/xT/Napoli_xt.png")
+# knitr::include_graphics("plots/xT/AS Roma_xt.png")
+# knitr::include_graphics("plots/xT/Inter Milan_xt.png")
+# knitr::include_graphics("plots/xT/Fiorentina_xt.png")
+# knitr::include_graphics("plots/xT/Lazio_xt.png")
+# knitr::include_graphics("plots/xT/Genoa_xt.png")
+# knitr::include_graphics("plots/xT/Empoli_xt.png")
+
+```
+
+```{r}
+#| layout-ncol: 2
+#| layout-nrow: 2
+#| column: page
+#| output: true
+
+# knitr::include_graphics("plots/xT/Juventus_xt.png")
+# knitr::include_graphics("plots/xT/Napoli_xt.png")
+knitr::include_graphics("plots/xT/AS Roma_xt.png")
+knitr::include_graphics("plots/xT/Inter Milan_xt.png")
+# knitr::include_graphics("plots/xT/Fiorentina_xt.png")
+# knitr::include_graphics("plots/xT/Lazio_xt.png")
+# knitr::include_graphics("plots/xT/Genoa_xt.png")
+# knitr::include_graphics("plots/xT/Empoli_xt.png")
+
+
+```
+
+```{r}
+#| layout-ncol: 2
+#| layout-nrow: 2
+#| column: page
+#| output: true
+
+# knitr::include_graphics("plots/xT/Juventus_xt.png")
+# knitr::include_graphics("plots/xT/Napoli_xt.png")
+# knitr::include_graphics("plots/xT/AS Roma_xt.png")
+# knitr::include_graphics("plots/xT/Inter Milan_xt.png")
+knitr::include_graphics("plots/xT/Fiorentina_xt.png")
+knitr::include_graphics("plots/xT/Lazio_xt.png")
+# knitr::include_graphics("plots/xT/Genoa_xt.png")
+# knitr::include_graphics("plots/xT/Empoli_xt.png")
+```
+
+```{r}
+#| layout-ncol: 2
+#| layout-nrow: 2
+#| column: page
+#| output: true
+
+# knitr::include_graphics("plots/xT/Juventus_xt.png")
+# knitr::include_graphics("plots/xT/Napoli_xt.png")
+# knitr::include_graphics("plots/xT/AS Roma_xt.png")
+# knitr::include_graphics("plots/xT/Inter Milan_xt.png")
+# knitr::include_graphics("plots/xT/Fiorentina_xt.png")
+# knitr::include_graphics("plots/xT/Lazio_xt.png")
+knitr::include_graphics("plots/xT/Genoa_xt.png")
+knitr::include_graphics("plots/xT/Empoli_xt.png")
+```
+
+<div class=key_points>
+
+Key points:
+
+-   Fiorentina, Napoli and Lazio have a higher threat around the penalty area compared to the other teams.
+
+-   Juventus have a uniquely high threat in the sector that lies two sectors above the bottom right corner (xT = 0.12).
+
+-   Juventus have the highest xT in the 6 yard box compared to the other teams. This is a good indication that Juventus were more clinical with their finishing compared to the other clubs.
+
+-   xT is always highest in the four sectors that encompass the penalty spot and the face of the goal. This is the same for all teams.
+
+</div>
+
+# Conclusion
+
+So, what sets the top teams apart from the rest? Below we have some concluding points that became evident in these visualisations:
+
+-   Top sides move the ball more.
+
+-   Top sides shoot more frequently and take their chances from outside the box too. They, try their luck or have more confidence (further research could be applied here).
+
+-   Top teams are more clinical when they get into ideal goal scoring positions.
+
+There are also some similarities between all clubs that stand out which tell us something about the general game of football:
+
+-   The highest threat and most goals scored take place in the sectors that are between the penalty spot and the face of the goal.
+
+-   Team movement maps are very similar as the ball often moves to the middle of the pitch and then wide. Very little action takes place in the middle portion of the pitch between the half way line circle and the edge of the box. (These are possibly spaces to exploit. Further analysis could go into player's off the ball movements)
