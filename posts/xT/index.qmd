@@ -19,7 +19,7 @@ knitr::opts_chunk$set(message = FALSE)
 
 # Introduction
 
-Expected threat, or xT, is a concept widely spoken, widely used and already well known. To hop onto the trend, I made use of the "Calculating xT (position-based)" tutorial presented by soccermatics (https://soccermatics.readthedocs.io/en/latest/gallery/lesson4/plot_ExpectedThreat.html).
+Expected threat, or xT, is a concept widely spoken, widely used and already well known. To hop onto the trend, I made use of the "Calculating xT (position-based)" tutorial presented by soccermatics ([see here](https://soccermatics.readthedocs.io/en/latest/gallery/lesson4/plot_ExpectedThreat.html)).
 
 In my short project I made use of the Serie A (2015/2016) dataset provided by statsbomb. I extracted data from the top four teams of that year (Inter Milan, Juventus, Napoli, Roma) and compared it to four middle table teams for that season (Lazio, Fiorentina, Empoli, Genoa) across a few sector-based metrics that can be visualized using heatmaps (goal frequency per sector, ball movement rate per sector, shot frequency per sector, xG per sector and xT)
 
